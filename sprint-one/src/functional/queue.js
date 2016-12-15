@@ -8,10 +8,26 @@ var Queue = function() {
 
   someInstance.enqueue = function(value) {
     size++;
-
+    storage[size] = value;
+    console.log(storage);
   };
 
   someInstance.dequeue = function() {
+    var temp = storage[1];
+    
+    console.log('Before: ' + storage[1]);
+    for (var i = 1; i < size; i++) {
+      storage[i] = storage[i + 1];
+    }
+    console.log('After: ' + storage[1]);
+    
+    delete storage[size];
+    
+    if (size !== 0) {
+      size--;
+    }
+
+    return temp;
   };
 
   someInstance.size = function() {
@@ -20,3 +36,5 @@ var Queue = function() {
 
   return someInstance;
 };
+
+
