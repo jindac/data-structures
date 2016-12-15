@@ -1,11 +1,11 @@
 var Stack = function() {
   var someInstance = {};
-  
+
+  someInstance['storage'] = {};
   someInstance['size'] = stackMethods.size;
   someInstance['push'] = stackMethods.push;
   someInstance['pop'] = stackMethods.pop;
   someInstance['currentSize'] = 0;
-  someInstance['storage'] = {};
   
   return someInstance; 
 };
@@ -34,5 +34,3 @@ var stackMethods = {
     return this.currentSize;
   }
 };
-
-
