@@ -23,26 +23,17 @@ treeMethods.contains = function(target) {
     return true;
   } else {
     for (var i = 0; i < this.children.length; i++) {
-      var temp = this.children[i].contains(target);
-      if (temp === true) {
+      if (this.children[i].contains(target)) {
         return true;
       }
     }
   } 
   return false;
-  // Otherwise, recursively call contains on child array
-  // which loops through all children
-
-    // if first child contains target, return true
-
-    // else, iterate to next child
-
-      // if there are no children left
 };
 
 
 
-/*
- * Complexity: What is the time complexity of the above functions?
- */
+// Complexity: What is the time complexity of the above functions?
+
+// Worst case: O(n).
 
