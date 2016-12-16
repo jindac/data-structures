@@ -18,6 +18,26 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  // If head contains target, return true
+  if (this.value === target) {
+    return true;
+  } else {
+    for (var i = 0; i < this.children.length; i++) {
+      var temp = this.children[i].contains(target);
+      if (temp === true) {
+        return true;
+      }
+    }
+  } 
+  return false;
+  // Otherwise, recursively call contains on child array
+  // which loops through all children
+
+    // if first child contains target, return true
+
+    // else, iterate to next child
+
+      // if there are no children left
 };
 
 
