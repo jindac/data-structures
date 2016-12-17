@@ -1,8 +1,8 @@
 var BinarySearchTree = function(value) {
   var newTree = {};
   newTree.value = value;
-  newTree.left;
-  newTree.right;
+  newTree.left = null;
+  newTree.right = null;
   
   newTree.insert = binTreeMethods.insert;
   newTree.contains = binTreeMethods.contains;
@@ -16,13 +16,13 @@ var binTreeMethods = {};
 binTreeMethods.insert = function(value) {
   // If value is less than this.value, 
   if (value < this.value) {
-    if (this.left === undefined) {
+    if (this.left === null) {
       this.left = BinarySearchTree(value);
     } else {
       this.left.insert(value);
     }
   } else {
-    if (this.right === undefined) {
+    if (this.right === null) {
       this.right = BinarySearchTree(value);
     } else {
       this.right.insert(value);
@@ -31,16 +31,30 @@ binTreeMethods.insert = function(value) {
 };
 
 binTreeMethods.contains = function(target) {
-  // If head contains target, return true
-  if (this.value === target) {
-    return true;
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].contains(target)) {
-        return true;
-      }
+  // Recursive Version:
+  // ------------------
+
+  // if (this.value === target) {
+  //   return true;
+  // } else if (target < this.value) {
+  //   return this.left ? this.left.contains(target) : false;
+  // } else {
+  //   return this.right ? this.right.contains(target) : false;
+  // }
+  // return false;
+
+  // While Version:
+  // --------------
+  var next = this;
+  while (next !== null) {
+    if (next.value === target) {
+      return true;
+    } else if (target < this.value) {
+      next = next.left;
+    } else {
+      next = next.right;
     }
-  } 
+  }
   return false;
 };  
 
