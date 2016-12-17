@@ -58,7 +58,16 @@ binTreeMethods.contains = function(target) {
   return false;
 };  
 
-binTreeMethods.depthFirstLog = function() {
+binTreeMethods.depthFirstLog = function(cb) {
+  if (this) {
+    cb(this.value);
+  } 
+  if (this.left !== null) {
+    this.left.depthFirstLog(cb);
+  }
+  if (this.right !== null) {
+    this.right.depthFirstLog(cb);
+  } 
 };
 
 
